@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  /* RónaRendelő színek - #80afa9 alapján */
+  --rona-50: #f2f7f6;
+  --rona-100: #e0edeb;
+  --rona-200: #c5ddd9;
+  --rona-300: #a3cac5;
+  --rona-400: #80afa9; /* fő szín - logó */
+  --rona-500: #5d9590;
+  --rona-600: #4a7b77;
+  --rona-700: #3d6662;
+  --rona-800: #34544f;
+  --rona-900: #2a4340;
+  /* Színátmenetes akcentusok */
+  --rona-light: #e0f2f0;
+  --rona-accent: #9cd4ce;
+  --rona-accent2: #7ec9c1;
+  --rona-gradient: linear-gradient(135deg, #80afa9 0%, #9cd4ce 50%, #b8e5df 100%);
+  --rona-gradient-light: linear-gradient(135deg, #e8f4f3 0%, #d0e8e6 50%, #b8dcd8 100%);
+  --rona-gradient-btn: linear-gradient(135deg, #80afa9 0%, #6a9e98 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  /* RónaRendelő türkiz színek */
+  --color-rona-50: var(--rona-50);
+  --color-rona-100: var(--rona-100);
+  --color-rona-200: var(--rona-200);
+  --color-rona-300: var(--rona-300);
+  --color-rona-400: var(--rona-400);
+  --color-rona-500: var(--rona-500);
+  --color-rona-600: var(--rona-600);
+  --color-rona-700: var(--rona-700);
+  --color-rona-800: var(--rona-800);
+  --color-rona-900: var(--rona-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
