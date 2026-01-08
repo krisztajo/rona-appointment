@@ -20,5 +20,14 @@
       "database_name": "rona-appointments-db",
       "database_id": "ae06ce9b-4575-4f03-a6b1-5451a3b87161"
     }
-  ]
+	]
+  ,
+  "observability": {
+    "logs": {
+      "enabled": false,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    }
+  }
 }
