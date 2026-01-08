@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rona-appointment",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2024-12-30",
+  "compatibility_flags": [
+    // Node.js API-k engedélyezése (kell a Next.js-hez)
+    "nodejs_compat"
+  ],
+  // Statikus fájlok (CSS, JS, képek) kiszolgálása
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  // D1 adatbázis binding - ez köti össze a kódot az adatbázissal
+  // Lokális fejlesztéshez bármilyen UUID működik, deploy előtt frissíteni kell
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "rona-appointments-db",
+      "database_id": "local-dev-00000000-0000-0000-0000-000000000000"
+    }
+  ]
+}
