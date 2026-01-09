@@ -1,22 +1,36 @@
 const fs = require('fs');
 const path = require('path');
 
-const workerPath = path.join(process.cwd(), '.open-next', 'worker.js');
+const handlerPath = path.join(process.cwd(), '.open-next', 'server-functions', 'default', 'handler.mjs');
 
-if (!fs.existsSync(workerPath)) {
-  console.log('.open-next/worker.js not found, skipping patch.');
+if (!fs.existsSync(handlerPath)) {
+  console.log('.open-next/server-functions/default/handler.mjs not found, skipping patch.');
   process.exit(0);
 }
 
-let content = fs.readFileSync(workerPath, 'utf8');
+let content = fs.readFileSync(handlerPath, 'utf8');
 
-const original = /globalThis\.setImmediate\s*=\s*setImmediate\s*;?/g;
-const replacement = 'try{ if (typeof globalThis.setImmediate === "undefined") globalThis.setImmediate = setImmediate; }catch(e){}';
+// Pattern 1: globalThis.setImmediate=patchedSetImmediate
+const pattern1 = /globalThis\.setImmediate\s*=\s*([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
+let count = 0;
 
-if (original.test(content)) {
-  content = content.replace(original, replacement);
-  fs.writeFileSync(workerPath, content, 'utf8');
-  console.log('Patched .open-next/worker.js to guard setImmediate assignment.');
+content = content.replace(pattern1, (match, varName) => {
+  count++;
+  return `try{globalThis.setImmediate=${varName}}catch(e){}`;
+});
+
+// Pattern 2: nodeTimers.setImmediate=patchedSetImmediate
+const pattern2 = /([a-zA-Z_$][a-zA-Z0-9_$]*)\.setImmediate\s*=\s*([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
+content = content.replace(pattern2, (match, obj, varName) => {
+  // Only patch if obj is not 'this' or common safe objects
+  if (obj === 'this' || obj === 'exports' || obj === 'module') return match;
+  count++;
+  return `try{${obj}.setImmediate=${varName}}catch(e){}`;
+});
+
+if (count > 0) {
+  fs.writeFileSync(handlerPath, content, 'utf8');
+  console.log(`Patched ${count} setImmediate assignments in handler.mjs to guard read-only errors.`);
 } else {
-  console.log('No setImmediate assignment found in .open-next/worker.js.');
+  console.log('No setImmediate assignments found in handler.mjs.');
 }
