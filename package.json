@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx opennextjs-cloudflare build && node ./scripts/patch-worker.js",
     "start": "next start",
     "lint": "eslint",
-    "preview": "npx opennextjs-cloudflare build && node ./scripts/patch-worker.js && npx opennextjs-cloudflare preview",
-    "build:cf": "npx opennextjs-cloudflare build && node ./scripts/patch-worker.js",
-    "deploy": "npm run build:cf && npx opennextjs-cloudflare deploy",
+    "preview": "npm run build && npx opennextjs-cloudflare preview",
+    "build:cf": "npm run build",
+    "deploy": "npm run build && npx opennextjs-cloudflare deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
