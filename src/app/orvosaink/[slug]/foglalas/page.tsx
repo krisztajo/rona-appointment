@@ -30,6 +30,7 @@ export default function BookingPage() {
   const router = useRouter();
   const slug = params.slug as string;
   const { isAuthenticated, isLoading: authLoading, user } = useAuth();
+  const allowedRoles = ["admin", "superadmin", "doctor"];
 
   const [doctor, setDoctor] = useState<Doctor | null>(null);
   const [slots, setSlots] = useState<GroupedSlots>({});
@@ -150,8 +151,8 @@ export default function BookingPage() {
     );
   }
 
-  // Ha nincs bejelentkezve, mutassunk bejelentkezési felhívást
-  if (!isAuthenticated) {
+  // Ha nincs bejelentkezve vagy nem admin/superadmin/doctor, mutassunk bejelentkezési/jogosultsági felhívást
+  if (!isAuthenticated || !user || !allowedRoles.includes(user.role)) {
     return (
       <div className="min-h-screen py-12">
         <div className="max-w-xl mx-auto px-4">
@@ -162,10 +163,10 @@ export default function BookingPage() {
               </svg>
             </div>
             <h1 className="text-2xl font-bold text-yellow-800 mb-2">
-              Bejelentkezés szükséges
+              Jogosultság szükséges
             </h1>
             <p className="text-yellow-700 mb-6">
-              Időpontfoglaláshoz kérjük, jelentkezzen be vagy regisztráljon.
+              Időpontfoglaláshoz admin, superadmin vagy orvos jogosultság szükséges.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

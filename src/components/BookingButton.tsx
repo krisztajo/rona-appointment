@@ -9,8 +9,11 @@ interface BookingButtonProps {
 }
 
 export default function BookingButton({ slug }: BookingButtonProps) {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading, user } = useAuth();
 
+
+  // Csak admin/superadmin/doctor role esetén jelenjen meg a foglalás gomb
+  const allowedRoles = ["admin", "superadmin", "doctor"];
   if (isLoading) {
     return (
       <div className="inline-flex items-center gap-2 bg-gray-300 text-gray-600 px-6 py-3 rounded-lg font-medium cursor-not-allowed">
@@ -23,7 +26,7 @@ export default function BookingButton({ slug }: BookingButtonProps) {
     );
   }
 
-  if (isAuthenticated) {
+  if (isAuthenticated && user && allowedRoles.includes(user.role)) {
     return (
       <Link
         href={`/orvosaink/${slug}/foglalas`}
