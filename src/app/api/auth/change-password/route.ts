@@ -10,8 +10,6 @@ import {
 } from '@/lib/auth';
 import { User, ChangePasswordRequest } from '@/types/database';
 
-export const runtime = 'edge';
-
 export async function POST(request: NextRequest) {
   try {
     // Token ellenőrzés

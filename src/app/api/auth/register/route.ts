@@ -9,8 +9,6 @@ import {
 } from '@/lib/auth';
 import { User, UserPublic, RegisterRequest, AuthResponse } from '@/types/database';
 
-export const runtime = 'edge';
-
 export async function POST(request: NextRequest) {
   try {
     const body: RegisterRequest = await request.json();

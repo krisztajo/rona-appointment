@@ -11,8 +11,6 @@ import {
 } from '@/lib/auth';
 import { User, UserPublic, LoginRequest, AuthResponse } from '@/types/database';
 
-export const runtime = 'edge';
-
 export async function POST(request: NextRequest) {
   try {
     const body: LoginRequest = await request.json();

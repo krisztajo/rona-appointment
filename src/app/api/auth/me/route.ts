@@ -4,8 +4,6 @@ import { getDB } from '@/lib/db';
 import { verifyToken, extractTokenFromHeader } from '@/lib/auth';
 import { User, UserPublic } from '@/types/database';
 
-export const runtime = 'edge';
-
 export async function GET(request: NextRequest) {
   try {
     // Token kinyerése a headerből

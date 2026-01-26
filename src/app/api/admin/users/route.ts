@@ -10,8 +10,6 @@ import {
 } from '@/lib/auth';
 import { User, UserPublic, CreateUserRequest, UpdateUserRequest, UserRole } from '@/types/database';
 
-export const runtime = 'edge';
-
 // Összes felhasználó lekérése (superadmin)
 export async function GET(request: NextRequest) {
   try {
