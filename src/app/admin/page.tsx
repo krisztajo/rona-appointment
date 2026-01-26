@@ -185,8 +185,8 @@ export default function AdminDashboard() {
           </div>
         )}
 
-        {/* Migráció gomb - meglévő DB frissítése */}
-        {isInitialized && (
+        {/* Migráció gomb - csak superadminnak */}
+        {isInitialized && user?.role === 'superadmin' && (
           <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 mb-8">
             <h2 className="text-lg font-semibold text-purple-800 mb-2">
               Adatbázis frissítése
