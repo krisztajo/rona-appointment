@@ -2,8 +2,9 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Doctor {
   id: number;
@@ -26,7 +27,9 @@ interface GroupedSlots {
 
 export default function BookingPage() {
   const params = useParams();
+  const router = useRouter();
   const slug = params.slug as string;
+  const { isAuthenticated, isLoading: authLoading, user } = useAuth();
 
   const [doctor, setDoctor] = useState<Doctor | null>(null);
   const [slots, setSlots] = useState<GroupedSlots>({});
@@ -43,6 +46,14 @@ export default function BookingPage() {
 
   // Success state
   const [bookingSuccess, setBookingSuccess] = useState(false);
+
+  // Ha a felhasználó be van jelentkezve, előre kitöltjük a form mezőket
+  useEffect(() => {
+    if (user) {
+      setPatientName(user.name);
+      setPatientEmail(user.email);
+    }
+  }, [user]);
 
   const loadData = useCallback(async () => {
     try {
@@ -131,10 +142,55 @@ export default function BookingPage() {
     return date.toLocaleDateString("hu-HU", options);
   };
 
-  if (loading) {
+  if (loading || authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-xl">Betöltés...</div>
+      </div>
+    );
+  }
+
+  // Ha nincs bejelentkezve, mutassunk bejelentkezési felhívást
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen py-12">
+        <div className="max-w-xl mx-auto px-4">
+          <div className="bg-yellow-50 rounded-2xl p-8 text-center">
+            <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <h1 className="text-2xl font-bold text-yellow-800 mb-2">
+              Bejelentkezés szükséges
+            </h1>
+            <p className="text-yellow-700 mb-6">
+              Időpontfoglaláshoz kérjük, jelentkezzen be vagy regisztráljon.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/auth/login"
+                className="inline-block bg-rona-600 text-white px-6 py-3 rounded-lg hover:bg-rona-700 transition-colors font-medium"
+              >
+                Bejelentkezés
+              </Link>
+              <Link
+                href="/auth/register"
+                className="inline-block bg-white text-rona-600 px-6 py-3 rounded-lg border-2 border-rona-600 hover:bg-rona-50 transition-colors font-medium"
+              >
+                Regisztráció
+              </Link>
+            </div>
+            <div className="mt-6">
+              <Link
+                href={`/orvosaink/${slug}`}
+                className="text-gray-600 hover:text-gray-800 text-sm"
+              >
+                ← Vissza az orvos oldalára
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

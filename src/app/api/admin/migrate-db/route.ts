@@ -76,6 +76,37 @@ export async function POST() {
       migrations.push("schedule_id oszlop hozzáadva a time_slots táblához");
     }
 
+    // 4. Ellenőrizzük, hogy létezik-e a users tábla
+    const usersTableExists = await db
+      .prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='users'")
+      .first();
+
+    if (!usersTableExists) {
+      await db.prepare(`
+        CREATE TABLE users (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          email TEXT UNIQUE NOT NULL,
+          password_hash TEXT NOT NULL,
+          name TEXT NOT NULL,
+          role TEXT NOT NULL DEFAULT 'user',
+          doctor_id INTEGER,
+          is_active INTEGER DEFAULT 1,
+          failed_login_attempts INTEGER DEFAULT 0,
+          last_failed_login DATETIME,
+          locked_until DATETIME,
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+        )
+      `).run();
+      
+      // Indexek létrehozása
+      await db.prepare("CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)").run();
+      await db.prepare("CREATE INDEX IF NOT EXISTS idx_users_role ON users(role)").run();
+      
+      migrations.push("users tábla létrehozva (autentikációhoz)");
+    }
+
     if (migrations.length === 0) {
       return NextResponse.json<ApiResponse>({
         success: true,

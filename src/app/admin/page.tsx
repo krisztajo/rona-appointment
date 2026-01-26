@@ -3,6 +3,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface DashboardStats {
   totalSlots: number;
@@ -12,9 +14,19 @@ interface DashboardStats {
 }
 
 export default function AdminDashboard() {
+  const router = useRouter();
+  const { user, isAuthenticated, isAdmin, isLoading: authLoading, logout } = useAuth();
+
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isInitialized, setIsInitialized] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Átirányítás, ha nincs admin jogosultság
+  useEffect(() => {
+    if (!authLoading && !isAdmin) {
+      router.push("/auth/login");
+    }
+  }, [authLoading, isAdmin, router]);
 
   // Adatbázis inicializálása
   const initDatabase = async () => {
@@ -111,10 +123,12 @@ export default function AdminDashboard() {
   };
 
   useEffect(() => {
-    loadStats();
-  }, []);
+    if (!authLoading && isAdmin) {
+      loadStats();
+    }
+  }, [authLoading, isAdmin]);
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center">
         <div className="text-xl">Betöltés...</div>
@@ -126,9 +140,29 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       <header className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-          <p className="text-gray-600">Időpontfoglaló kezelőfelület</p>
+        <div className="max-w-7xl mx-auto px-4 py-6 flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+            <p className="text-gray-600">Időpontfoglaló kezelőfelület</p>
+          </div>
+          {user && (
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <div className="text-sm font-medium text-gray-900">{user.name}</div>
+                <div className="text-xs text-gray-500">
+                  {user.role === 'superadmin' ? 'Szuperadmin' : 
+                   user.role === 'admin' ? 'Admin' : 
+                   user.role === 'doctor' ? 'Orvos' : 'Felhasználó'}
+                </div>
+              </div>
+              <button
+                onClick={logout}
+                className="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"
+              >
+                Kijelentkezés
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
@@ -198,7 +232,7 @@ export default function AdminDashboard() {
         )}
 
         {/* Gyors navigáció */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <NavCard
             title="Új foglalás"
             description="Új foglalás létrehozása páciens részére"
@@ -229,6 +263,14 @@ export default function AdminDashboard() {
             href="/admin/appointments"
             icon="📋"
           />
+          {user?.role === 'superadmin' && (
+            <NavCard
+              title="Felhasználók"
+              description="Felhasználók kezelése, szerepkörök beállítása"
+              href="/admin/users"
+              icon="👥"
+            />
+          )}
         </div>
 
         {/* Vissza a főoldalra */}

@@ -122,3 +122,80 @@ export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
 }
+
+// ============================================
+// Felhasználói autentikáció típusok
+// ============================================
+
+// Felhasználói szerepkörök
+export type UserRole = 'user' | 'admin' | 'doctor' | 'superadmin';
+
+// Felhasználó adatbázis rekord
+export interface User {
+  id: number;
+  email: string;
+  password_hash: string;
+  name: string;
+  role: UserRole;
+  doctor_id: number | null;  // Ha orvos, melyik orvoshoz tartozik
+  is_active: number;         // 1 = aktív, 0 = inaktív
+  failed_login_attempts: number;
+  last_failed_login: string | null;
+  locked_until: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+// Felhasználó publikus adatai (jelszó nélkül)
+export interface UserPublic {
+  id: number;
+  email: string;
+  name: string;
+  role: UserRole;
+  doctor_id: number | null;
+  is_active: number;
+  created_at: string;
+}
+
+// Regisztrációs kérés
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  name: string;
+}
+
+// Bejelentkezési kérés
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+// Jelszó változtatás kérés
+export interface ChangePasswordRequest {
+  current_password: string;
+  new_password: string;
+}
+
+// Felhasználó létrehozás (admin által)
+export interface CreateUserRequest {
+  email: string;
+  password: string;
+  name: string;
+  role: UserRole;
+  doctor_id?: number;
+}
+
+// Felhasználó módosítás
+export interface UpdateUserRequest {
+  email?: string;
+  name?: string;
+  role?: UserRole;
+  doctor_id?: number | null;
+  is_active?: number;
+}
+
+// Auth válasz (bejelentkezés/regisztráció után)
+export interface AuthResponse {
+  user: UserPublic;
+  token: string;
+}

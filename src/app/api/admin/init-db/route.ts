@@ -79,7 +79,7 @@ export async function POST() {
           FOREIGN KEY (time_slot_id) REFERENCES time_slots(id)
         )
       `),
-      // Adminisztrátorok
+      // Adminisztrátorok (régi, legacy)
       db.prepare(`
         CREATE TABLE IF NOT EXISTS admins (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -88,6 +88,30 @@ export async function POST() {
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )
       `),
+      // Felhasználók (autentikáció és jogosultságok)
+      db.prepare(`
+        CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          email TEXT UNIQUE NOT NULL,
+          password_hash TEXT NOT NULL,
+          name TEXT NOT NULL,
+          role TEXT NOT NULL DEFAULT 'user',
+          doctor_id INTEGER,
+          is_active INTEGER DEFAULT 1,
+          failed_login_attempts INTEGER DEFAULT 0,
+          last_failed_login DATETIME,
+          locked_until DATETIME,
+          created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY (doctor_id) REFERENCES doctors(id)
+        )
+      `),
+      // Indexek létrehozása
+      db.prepare("CREATE INDEX IF NOT EXISTS idx_time_slots_date ON time_slots(date)"),
+      db.prepare("CREATE INDEX IF NOT EXISTS idx_time_slots_doctor ON time_slots(doctor_id)"),
+      db.prepare("CREATE INDEX IF NOT EXISTS idx_appointments_status ON appointments(status)"),
+      db.prepare("CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)"),
+      db.prepare("CREATE INDEX IF NOT EXISTS idx_users_role ON users(role)"),
     ]);
 
     return NextResponse.json<ApiResponse>({

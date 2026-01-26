@@ -38,6 +38,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+docs/
 next-env.d.ts
 
 # Cloudflare

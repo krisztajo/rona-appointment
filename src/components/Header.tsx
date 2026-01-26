@@ -3,7 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { contactInfo } from "@/data/contact";
+import { useAuth } from "@/contexts/AuthContext";
 
 const navigation = [
   { name: "Főoldal", href: "/" },
@@ -15,6 +17,15 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const router = useRouter();
+  const { user, isAuthenticated, isAdmin, logout, isLoading } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    setUserMenuOpen(false);
+    router.push("/");
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -81,6 +92,68 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Auth Links */}
+            {!isLoading && (
+              isAuthenticated && user ? (
+                <div className="relative">
+                  <button
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center gap-2 text-gray-700 hover:text-rona-600 font-medium transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-rona-100 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-rona-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <span className="hidden lg:inline">{user.name.split(' ')[0]}</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {/* User Dropdown */}
+                  {userMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+                      <div className="py-1">
+                        <div className="px-4 py-2 text-sm text-gray-500 border-b">
+                          {user.email}
+                        </div>
+                        <Link
+                          href="/auth/profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          Profil
+                        </Link>
+                        {isAdmin && (
+                          <Link
+                            href="/admin"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            onClick={() => setUserMenuOpen(false)}
+                          >
+                            Admin felület
+                          </Link>
+                        )}
+                        <button
+                          onClick={handleLogout}
+                          className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
+                        >
+                          Kijelentkezés
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  href="/auth/login"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-rona-600 hover:bg-rona-700 transition-colors"
+                >
+                  Bejelentkezés
+                </Link>
+              )
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -112,6 +185,52 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
+              
+              {/* Mobile Auth Links */}
+              {!isLoading && (
+                isAuthenticated && user ? (
+                  <>
+                    <div className="border-t pt-4 mt-2">
+                      <div className="text-sm text-gray-500 mb-2">{user.email}</div>
+                      <Link
+                        href="/auth/profile"
+                        className="block text-gray-700 hover:text-rona-600 font-medium transition-colors mb-2"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        Profil
+                      </Link>
+                      {isAdmin && (
+                        <Link
+                          href="/admin"
+                          className="block text-gray-700 hover:text-rona-600 font-medium transition-colors mb-2"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Admin felület
+                        </Link>
+                      )}
+                      <button
+                        onClick={() => {
+                          handleLogout();
+                          setMobileMenuOpen(false);
+                        }}
+                        className="text-red-600 hover:text-red-700 font-medium transition-colors"
+                      >
+                        Kijelentkezés
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="border-t pt-4 mt-2">
+                    <Link
+                      href="/auth/login"
+                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-rona-600 hover:bg-rona-700 transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Bejelentkezés
+                    </Link>
+                  </div>
+                )
+              )}
             </div>
           </div>
         )}
