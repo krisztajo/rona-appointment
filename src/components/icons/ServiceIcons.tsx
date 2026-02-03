@@ -41,12 +41,12 @@ export const OrthopedicsIcon: React.FC<IconProps> = ({ className = "", size = de
     <svg
       width={size}
       height={size}
-      viewBox="0 0 303 415"
+      viewBox="0 0 360 415"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g transform="translate(0,415) scale(0.1,-0.1)" fill="currentColor" stroke="none">
+      <g transform="translate(0,415) scale(0.12,-0.12)" fill="currentColor" stroke="currentColor" strokeWidth="6">
         <path d="M1642 3872 c3 -75 8 -96 34 -142 40 -71 56 -74 33 -8 -10 29 -18 64 -19 77 0 20 2 22 16 10 26 -21 43 -64 51 -126 l7 -58 9 40 c11 51 1 137 -22 189 -17 40 -81 106 -103 106 -7 0 -9 -29 -6 -88z"/>
         <path d="M1153 3720 c8 -66 36 -128 82 -179 21 -23 39 -40 41 -38 2 2 -8 25 -21 52 -14 26 -25 57 -25 69 0 39 59 -33 80 -99 l19 -60 0 46 c2 101 -52 204 -123 239 -23 11 -46 20 -51 20 -4 0 -5 -22 -2 -50z"/>
         <path d="M2005 3721 c-33 -16 -74 -44 -91 -62 -61 -67 -89 -126 -36 -77 37 34 74 58 90 58 23 0 -20 -59 -64 -88 -85 -55 -82 -52 -49 -45 80 16 174 83 205 144 20 38 27 99 13 99 -5 0 -35 -13 -68 -29z"/>
