@@ -40,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hu">
-      <body className={`${inter.className} antialiased bg-gray-50`}>
+        <body className="antialiased bg-gray-50">
         <AuthProvider>
           <Header />
           <main className="min-h-screen">
