@@ -35,24 +35,37 @@ export const DermatologyIcon: React.FC<IconProps> = ({ className = "", size = de
 );
 
 // Ortopédia - Csont
-export const OrthopedicsIcon: React.FC<IconProps> = ({ className = "", size = defaultSize }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 32 32"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth={strokeWidth}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    {/* Csont forma */}
-    <path d="M8 6 Q4 6, 4 9 Q4 12, 8 12 L8 20 Q4 20, 4 23 Q4 26, 8 26 Q10 26, 10 23 L10 9 Q10 6, 8 6" />
-    <path d="M24 6 Q28 6, 28 9 Q28 12, 24 12 L24 20 Q28 20, 28 23 Q28 26, 24 26 Q22 26, 22 23 L22 9 Q22 6, 24 6" />
-    <rect x="10" y="13" width="12" height="6" rx="1" />
-  </svg>
-);
+export const OrthopedicsIcon: React.FC<IconProps> = ({ className = "", size = defaultSize }) => {
+  const color = "currentColor";
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      {/* A tartó karó (egyenes oszlop) */}
+      <path d="M9 21V3" />
+      {/* A görbe fatörzs */}
+      <path d="M15 21C15 21 15 15 13 12C11 9 11 7 11 3" />
+      {/* Kötések (a karó és a fa között) */}
+      <path d="M9 7L11 8" />
+      <path d="M9 12L12 13" />
+      <path d="M9 17L14 18" />
+      {/* Lombkorona / Levelek sematikusan */}
+      <circle cx="11" cy="3" r="1" fill={color} />
+      <circle cx="14" cy="5" r="1" fill={color} />
+      <circle cx="17" cy="8" r="1" fill={color} />
+      <circle cx="16" cy="11" r="1" fill={color} />
+      <circle cx="12" cy="6" r="1" fill={color} />
+    </svg>
+  );
+};
 
 // Urológia - Vese
 export const UrologyIcon: React.FC<IconProps> = ({ className = "", size = defaultSize }) => (
