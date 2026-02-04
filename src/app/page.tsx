@@ -166,8 +166,7 @@ export default function Home() {
               href="https://whitelab.hu/helyszinek/rona-rendelo"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white p-6 rounded-xl shadow-sm border-2 transition-all duration-200 group"
-              style={{ borderColor: 'rgb(211, 35, 120)' }}
+              className="bg-white p-6 rounded-xl shadow-sm border-2 border-transparent hover:border-[#d32378] hover:shadow-lg transition-all duration-200 group"
             >
               <div className="transition-transform duration-200 group-hover:scale-110 inline-block mb-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
