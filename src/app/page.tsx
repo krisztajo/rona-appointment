@@ -146,7 +146,7 @@ export default function Home() {
               { name: "Urológia", icon: UrologyIcon, desc: "Urológiai vizsgálatok és kezelések", link: "/szolgaltatasok" },
               { name: "Sebészet", icon: SurgeryIcon, desc: "Általános és onkosebészet", link: "/szolgaltatasok" },
               { name: "UH Diagnosztika", icon: UltrasoundIcon, desc: "Ultrahang vizsgálatok", link: "/szolgaltatasok" },
-              { name: "WhiteLab", icon: WhiteLabIcon, desc: "EMS edzés, személyi edzés, fitness tanácsadás", link: "https://whitelab.hu/helyszinek/rona-rendelo", external: true, color: "rgb(211, 35, 120)" },
+              { name: "WhiteLab", icon: WhiteLabIcon, desc: "Laborvizsgálatok", link: "https://whitelab.hu/helyszinek/rona-rendelo", external: true, color: "rgb(211, 35, 120)" },
             ].map((specialty) => (
               specialty.external ? (
                 <a

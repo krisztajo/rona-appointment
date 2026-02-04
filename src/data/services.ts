@@ -94,9 +94,7 @@ export const serviceCategories: ServiceCategory[] = [
     customColor: "rgb(211, 35, 120)",
     externalLink: "https://whitelab.hu/helyszinek/rona-rendelo",
     services: [
-      { name: "EMS edzés", price: "Részletek a WhiteLab oldalon" },
-      { name: "Személyi edzés", price: "Részletek a WhiteLab oldalon" },
-      { name: "Fitness tanácsadás", price: "Részletek a WhiteLab oldalon" }
+      { name: "Laborvizsgálatok", price: "Részletek a WhiteLab oldalon" },
     ]
   }
 ];
