@@ -146,47 +146,38 @@ export default function Home() {
               { name: "Urológia", icon: UrologyIcon, desc: "Urológiai vizsgálatok és kezelések", link: "/szolgaltatasok" },
               { name: "Sebészet", icon: SurgeryIcon, desc: "Általános és onkosebészet", link: "/szolgaltatasok" },
               { name: "UH Diagnosztika", icon: UltrasoundIcon, desc: "Ultrahang vizsgálatok", link: "/szolgaltatasok" },
-              { name: "WhiteLab", icon: null, desc: "Laborvizsgálatok", link: "https://whitelab.hu/helyszinek/rona-rendelo", external: true, color: "rgb(211, 35, 120)", logoImg: "/whitelab-logo-full.webp" },
             ].map((specialty) => (
-              specialty.external ? (
-                <a
-                  key={specialty.name}
-                  href={specialty.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white p-6 rounded-xl shadow-sm border-2 transition-all duration-200 group"
-                  style={{ borderColor: specialty.color || 'transparent' }}
-                >
-                  <div className="transition-transform duration-200 group-hover:scale-110 inline-block mb-4" style={{ color: specialty.color }}>
-                    {specialty.logoImg ? (
-                      <img src={specialty.logoImg} alt="WhiteLab logó" style={{ height: 38, maxWidth: 120, objectFit: 'contain', display: 'block', margin: '0 auto' }} />
-                    ) : specialty.icon ? (
-                      <specialty.icon size={40} className="transition-colors" />
-                    ) : null}
-                  </div>
-                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
-                    {specialty.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{specialty.desc}</p>
-                </a>
-              ) : (
-                <Link
-                  key={specialty.name}
-                  href={specialty.link}
-                  className="bg-white p-6 rounded-xl shadow-sm border-2 border-transparent hover:border-rona-400 hover:shadow-lg transition-all duration-200 group"
-                >
-                  <div className="transition-transform duration-200 group-hover:scale-110 inline-block">
-                    {specialty.icon ? (
-                      <specialty.icon size={40} className="text-rona-500 group-hover:text-rona-600 transition-colors mb-4" />
-                    ) : null}
-                  </div>
-                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
-                    {specialty.name}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{specialty.desc}</p>
-                </Link>
-              )
+              <Link
+                key={specialty.name}
+                href={specialty.link}
+                className="bg-white p-6 rounded-xl shadow-sm border-2 border-transparent hover:border-rona-400 hover:shadow-lg transition-all duration-200 group"
+              >
+                <div className="transition-transform duration-200 group-hover:scale-110 inline-block">
+                  <specialty.icon size={40} className="text-rona-500 group-hover:text-rona-600 transition-colors mb-4" />
+                </div>
+                <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
+                  {specialty.name}
+                </h3>
+                <p className="text-gray-600 text-sm">{specialty.desc}</p>
+              </Link>
             ))}
+            {/* WhiteLab - külső link, képes logóval */}
+            <a
+              href="https://whitelab.hu/helyszinek/rona-rendelo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white p-6 rounded-xl shadow-sm border-2 transition-all duration-200 group"
+              style={{ borderColor: 'rgb(211, 35, 120)' }}
+            >
+              <div className="transition-transform duration-200 group-hover:scale-110 inline-block mb-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/whitelab-logo-full.webp" alt="WhiteLab logó" style={{ height: 38, maxWidth: 120, objectFit: 'contain', display: 'block', margin: '0 auto' }} />
+              </div>
+              <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
+                WhiteLab
+              </h3>
+              <p className="text-gray-600 text-sm">Laborvizsgálatok</p>
+            </a>
           </div>
 
           <div className="text-center mt-10">
