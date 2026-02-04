@@ -171,7 +171,7 @@ export default function Home() {
             >
               <div className="transition-transform duration-200 group-hover:scale-110 inline-block mb-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/whitelab-logo-full.webp" alt="WhiteLab logó" style={{ height: 38, maxWidth: 120, objectFit: 'contain', display: 'block', margin: '0 auto' }} />
+                <img src="/whitelab2.png" alt="WhiteLab logó" style={{ height: 38, maxWidth: 120, objectFit: 'contain', display: 'block', margin: '0 auto' }} />
               </div>
               <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
                 WhiteLab
