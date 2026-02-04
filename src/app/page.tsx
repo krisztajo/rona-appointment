@@ -176,7 +176,9 @@ export default function Home() {
                   className="bg-white p-6 rounded-xl shadow-sm border-2 border-transparent hover:border-rona-400 hover:shadow-lg transition-all duration-200 group"
                 >
                   <div className="transition-transform duration-200 group-hover:scale-110 inline-block">
-                    <specialty.icon size={40} className="text-rona-500 group-hover:text-rona-600 transition-colors mb-4" />
+                    {specialty.icon ? (
+                      <specialty.icon size={40} className="text-rona-500 group-hover:text-rona-600 transition-colors mb-4" />
+                    ) : null}
                   </div>
                   <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
                     {specialty.name}
