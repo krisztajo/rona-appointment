@@ -1,7 +1,10 @@
-export interface Doctor {
+export type StaffType = 'doctor' | 'assistant';
+
+export interface StaffMember {
   id: string;
   name: string;
   title: string;
+  staffType: StaffType;
   specialties: string[];
   schedule: string;
   image: string;
@@ -13,11 +16,15 @@ export interface Doctor {
   website?: string;
 }
 
-export const doctors: Doctor[] = [
+// Backward compatibility
+export type Doctor = StaffMember;
+
+export const doctors: StaffMember[] = [
   {
     id: "dr-csitos-agnes",
     name: "Dr. Csitos Ágnes",
     title: "rendelővezető",
+    staffType: "doctor",
     specialties: ["Bőrgyógyászat", "Gyerekbőrgyógyászat", "Kozmetológia"],
     schedule: "Kedd: 15:30-18:00, Péntek: 8:00-12:00",
     image: "/images/doctors/dr-csitos-agnes.jpg",
@@ -46,6 +53,7 @@ Fő érdeklődési területem az ér-, valamint a festéksejtes anyajegyek gondo
     id: "dr-vasarhelyi-gabor",
     name: "Dr. Vásárhelyi Gábor",
     title: "rendelővezető",
+    staffType: "doctor",
     specialties: ["Ortopédia", "Sportsebészet", "Traumatológia"],
     schedule: "Szerda: 15:30-18:00",
     image: "/images/doctors/dr-vasarhelyi-gabor.jpg",
@@ -72,6 +80,7 @@ A RónaRendelő-ben lehetőség van az előzményi adatok, fizikális vizsgálat
     id: "dr-nahm-krisztina",
     name: "Dr. Náhm Krisztina",
     title: "főorvos",
+    staffType: "doctor",
     specialties: ["UH diagnosztika", "Radiológia"],
     schedule: "Hétfő: 16:00-18:00",
     image: "/images/doctors/dr-nahm-krisztina.jpg",
@@ -101,6 +110,7 @@ Rendelőnkben a legkülönfélébb ultrahang vizsgálatokat végezzük. Az elvé
     id: "dr-toth-zoltan",
     name: "Dr. Tóth Zoltán",
     title: "osztályvezető főorvos, PhD",
+    staffType: "doctor",
     specialties: ["Urológia", "Onkosebészet"],
     schedule: "Hétfő: 15:00-20:00",
     image: "/images/doctors/dr-toth-zoltan.jpg",
@@ -126,6 +136,7 @@ Várom, hogy segíthessek Önnek is egészsége megőrzésében és gyógyítás
     id: "dr-dede-kristof",
     name: "Dr. Dede Kristóf Ph.D.",
     title: "osztályvezető helyettes főorvos",
+    staffType: "doctor",
     specialties: ["Általános sebészet", "Onkosebészet", "Laparoszkópos sebészet"],
     schedule: "Szerda: 16:00-18:00",
     image: "/images/doctors/dr-dede-kristof.jpg",
@@ -153,6 +164,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     id: "dr-domaraczki-oliver",
     name: "Dr. Domaraczki Olivér",
     title: "szakorvos",
+    staffType: "doctor",
     specialties: ["Ortopédia", "Traumatológia", "Sportsebészet", "Vállspecialista"],
     schedule: "Hétfő: 15:30-18:00",
     image: "/images/doctors/dr-domaraczki-oliver.jpg",
@@ -169,6 +181,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     id: "dr-szerb-imre",
     name: "Dr. Szerb Imre",
     title: "szakorvos",
+    staffType: "doctor",
     specialties: ["Ortopédia"],
     schedule: "Kedd: 15:30-18:00",
     image: "/images/doctors/dr-szerb-imre.jpg",
@@ -184,6 +197,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     id: "dr-pap-karoly",
     name: "Dr. Pap Károly Ph.D.",
     title: "egyetemi adjunktus",
+    staffType: "doctor",
     specialties: ["Ortopédia", "Sportsebészet", "Traumatológia"],
     schedule: "Csütörtök: 16:00-18:00",
     image: "/images/doctors/dr-pap-karoly.jpg",
@@ -200,6 +214,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     id: "dr-papp-geza",
     name: "Dr. Papp Géza",
     title: "szakorvos",
+    staffType: "doctor",
     specialties: ["Sebészet", "Onkosebészet"],
     schedule: "Kedd: 16:00-19:00",
     image: "/images/doctors/dr-papp-geza.jpg",
@@ -215,6 +230,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     id: "dr-mikoczi-mario",
     name: "Dr. Mikoczi Márió",
     title: "adjunktus",
+    staffType: "doctor",
     specialties: ["Gyermeksebészet"],
     schedule: "Csütörtök: 16:00-18:00",
     image: "/images/doctors/dr-mikoczi-mario.jpg",
@@ -225,6 +241,21 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
       "Gyermeksebészeti konzultáció",
       "Kisebb gyermeksebészeti beavatkozások"
     ]
+  },
+  {
+    id: "kovacs-andrea",
+    name: "Kovács Andrea",
+    title: "Ügyfélszolgálati asszisztens",
+    staffType: "assistant",
+    specialties: ["Ügyfélszolgálat", "Időpontfoglalás"],
+    schedule: "Hétfő-Péntek: 8:00-16:00",
+    image: "/images/staff/kovacs-andrea.jpg",
+    shortBio: "Ügyfélszolgálati csapatunk vezető asszisztense, több éves tapasztalattal a betegellátásban.",
+    fullBio: `Több mint 8 éve dolgozom az egészségügyi szektorban, ügyfélszolgálati területen. Feladataim közé tartozik az időpontfoglalás koordinálása, a betegek fogadása és tájékoztatása, valamint a rendelő napi működésének adminisztratív támogatása.
+
+Célom, hogy minden betegünk kellemes és gördülékeny élményben részesüljön a RónaRendelőben. Szívesen segítek az időpontok egyeztetésében, a szükséges információk megadásában, valamint az orvosainkkal való kapcsolattartás koordinálásában.
+
+Minden nap azzal a célkitűzéssel érkezem a rendelőbe, hogy pácienseink számára a lehető legkellemesebb és leghatékonyabb ellátást biztosítsuk.`
   }
 ];
 

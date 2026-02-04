@@ -30,8 +30,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/orvosaink" className="hover:text-rona-500 transition-colors">
-                  Orvosaink
+                <Link href="/munkatarsaink" className="hover:text-rona-500 transition-colors">
+                  Munkatársaink
                 </Link>
               </li>
                 <li>

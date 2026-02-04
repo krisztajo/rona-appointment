@@ -10,7 +10,7 @@ import { useAuth } from "@/contexts/AuthContext";
 const navigation = [
   { name: "Főoldal", href: "/" },
   { name: "Rólunk", href: "/rolunk" },
-  { name: "Orvosaink", href: "/orvosaink" },
+  { name: "Munkatársaink", href: "/munkatarsaink" },
   { name: "Árak & Szolgáltatások", href: "/szolgaltatasok" },
   { name: "Kapcsolat", href: "/kapcsolat" },
 ];

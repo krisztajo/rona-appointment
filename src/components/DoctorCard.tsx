@@ -8,7 +8,7 @@ interface DoctorCardProps {
 
 export default function DoctorCard({ doctor }: DoctorCardProps) {
   return (
-    <Link href={`/orvosaink/${doctor.id}`} className="group h-full">
+    <Link href={`/munkatarsaink/${doctor.id}`} className="group h-full">
       <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 p-5 h-full flex flex-col">
         <div className="flex items-start gap-4">
           {/* Small oval photo */}
