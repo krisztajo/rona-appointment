@@ -184,7 +184,7 @@ export default function BookingPage() {
             </div>
             <div className="mt-6">
               <Link
-                href={`/orvosaink/${slug}`}
+                href={`/munkatarsaink/${slug}`}
                 className="text-gray-600 hover:text-gray-800 text-sm"
               >
                 ← Vissza az orvos oldalára
@@ -201,7 +201,7 @@ export default function BookingPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Orvos nem található</h1>
-          <Link href="/orvosaink" className="text-rona-600 hover:text-rona-700">
+          <Link href="/munkatarsaink" className="text-rona-600 hover:text-rona-700">
             Vissza az orvosok listájához
           </Link>
         </div>
@@ -232,7 +232,7 @@ export default function BookingPage() {
               <p className="text-gray-700"><strong>Időpont:</strong> {selectedSlot?.start_time} - {selectedSlot?.end_time}</p>
             </div>
             <Link
-              href={`/orvosaink/${slug}`}
+              href={`/munkatarsaink/${slug}`}
               className="inline-block bg-rona-500 text-white px-6 py-3 rounded-lg hover:bg-rona-600 transition-colors"
             >
               Vissza az orvos oldalára
@@ -250,7 +250,7 @@ export default function BookingPage() {
       <div className="max-w-4xl mx-auto px-4">
         {/* Vissza link */}
         <Link
-          href={`/orvosaink/${slug}`}
+          href={`/munkatarsaink/${slug}`}
           className="inline-flex items-center gap-2 text-rona-600 hover:text-rona-700 mb-8 transition-colors"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
