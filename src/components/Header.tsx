@@ -12,6 +12,7 @@ const navigation = [
   { name: "Rólunk", href: "/rolunk" },
   { name: "Munkatársaink", href: "/munkatarsaink" },
   { name: "Árak & Szolgáltatások", href: "/szolgaltatasok" },
+  { name: "WhiteLab", href: "https://whitelab.hu/helyszinek/rona-rendelo", external: true },
   { name: "Kapcsolat", href: "/kapcsolat" },
 ];
 
@@ -84,13 +85,25 @@ export default function Header() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-700 hover:text-rona-600 font-medium text-lg transition-colors"
-              >
-                {item.name}
-              </Link>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-rona-600 font-medium text-lg transition-colors"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-rona-600 font-medium text-lg transition-colors"
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
 
             {/* Auth Links */}
@@ -176,14 +189,27 @@ export default function Header() {
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col gap-4">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-700 hover:text-rona-600 font-medium transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-700 hover:text-rona-600 font-medium transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-700 hover:text-rona-600 font-medium transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
               
               {/* Mobile Auth Links */}

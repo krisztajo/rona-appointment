@@ -187,6 +187,29 @@ export const TraumatologyIcon: React.FC<IconProps> = ({ className = "", size = d
   </svg>
 );
 
+// WhiteLab - Modern fitness/wellness icon
+export const WhiteLabIcon: React.FC<IconProps> = ({ className = "", size = defaultSize }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {/* Abstract person in motion/exercise */}
+    <circle cx="16" cy="8" r="3" fill="currentColor" />
+    <path d="M16 11 L16 20" strokeWidth={2.5} />
+    <path d="M16 14 L11 18" strokeWidth={2.5} />
+    <path d="M16 14 L21 18" strokeWidth={2.5} />
+    <path d="M16 20 L12 27" strokeWidth={2.5} />
+    <path d="M16 20 L20 27" strokeWidth={2.5} />
+  </svg>
+);
+
 // Ikon mapping az ID-k alapján
 export const serviceIconMap: Record<string, React.FC<IconProps>> = {
   borgyogyaszat: DermatologyIcon,
@@ -196,6 +219,7 @@ export const serviceIconMap: Record<string, React.FC<IconProps>> = {
   ultrahang: UltrasoundIcon,
   gyermeksebeszet: PediatricSurgeryIcon,
   traumatologia: TraumatologyIcon,
+  whitelab: WhiteLabIcon,
 };
 
 // Univerzális ServiceIcon komponens

@@ -9,6 +9,7 @@ import {
   UrologyIcon,
   SurgeryIcon,
   UltrasoundIcon,
+  WhiteLabIcon,
 } from "@/components/icons/ServiceIcons";
 
 export default function Home() {
@@ -139,26 +140,46 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Bőrgyógyászat", icon: DermatologyIcon, desc: "Anyajegyszűrés, bőrbetegségek, kozmetológia" },
-              { name: "Ortopédia", icon: OrthopedicsIcon, desc: "Mozgásszervi betegségek, sportsérülések" },
-              { name: "Traumatológia", icon: TraumatologyIcon, desc: "Baleseti sebészet, töréskezelés" },
-              { name: "Urológia", icon: UrologyIcon, desc: "Urológiai vizsgálatok és kezelések" },
-              { name: "Sebészet", icon: SurgeryIcon, desc: "Általános és onkosebészet" },
-              { name: "UH Diagnosztika", icon: UltrasoundIcon, desc: "Ultrahang vizsgálatok" },
+              { name: "Bőrgyógyászat", icon: DermatologyIcon, desc: "Anyajegyszűrés, bőrbetegségek, kozmetológia", link: "/szolgaltatasok" },
+              { name: "Ortopédia", icon: OrthopedicsIcon, desc: "Mozgásszervi betegségek, sportsérülések", link: "/szolgaltatasok" },
+              { name: "Traumatológia", icon: TraumatologyIcon, desc: "Baleseti sebészet, töréskezelés", link: "/szolgaltatasok" },
+              { name: "Urológia", icon: UrologyIcon, desc: "Urológiai vizsgálatok és kezelések", link: "/szolgaltatasok" },
+              { name: "Sebészet", icon: SurgeryIcon, desc: "Általános és onkosebészet", link: "/szolgaltatasok" },
+              { name: "UH Diagnosztika", icon: UltrasoundIcon, desc: "Ultrahang vizsgálatok", link: "/szolgaltatasok" },
+              { name: "WhiteLab", icon: WhiteLabIcon, desc: "EMS edzés, személyi edzés, fitness tanácsadás", link: "https://whitelab.hu/helyszinek/rona-rendelo", external: true, color: "rgb(211, 35, 120)" },
             ].map((specialty) => (
-              <Link
-                key={specialty.name}
-                href="/szolgaltatasok"
-                className="bg-white p-6 rounded-xl shadow-sm border-2 border-transparent hover:border-rona-400 hover:shadow-lg transition-all duration-200 group"
-              >
-                <div className="transition-transform duration-200 group-hover:scale-110 inline-block">
-                  <specialty.icon size={40} className="text-rona-500 group-hover:text-rona-600 transition-colors mb-4" />
-                </div>
-                <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
-                  {specialty.name}
-                </h3>
-                <p className="text-gray-600 text-sm">{specialty.desc}</p>
-              </Link>
+              specialty.external ? (
+                <a
+                  key={specialty.name}
+                  href={specialty.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white p-6 rounded-xl shadow-sm border-2 transition-all duration-200 group"
+                  style={{ borderColor: specialty.color || 'transparent' }}
+                >
+                  <div className="transition-transform duration-200 group-hover:scale-110 inline-block" style={{ color: specialty.color }}>
+                    <specialty.icon size={40} className="transition-colors mb-4" />
+                  </div>
+                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
+                    {specialty.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{specialty.desc}</p>
+                </a>
+              ) : (
+                <Link
+                  key={specialty.name}
+                  href={specialty.link}
+                  className="bg-white p-6 rounded-xl shadow-sm border-2 border-transparent hover:border-rona-400 hover:shadow-lg transition-all duration-200 group"
+                >
+                  <div className="transition-transform duration-200 group-hover:scale-110 inline-block">
+                    <specialty.icon size={40} className="text-rona-500 group-hover:text-rona-600 transition-colors mb-4" />
+                  </div>
+                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
+                    {specialty.name}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{specialty.desc}</p>
+                </Link>
+              )
             ))}
           </div>
 

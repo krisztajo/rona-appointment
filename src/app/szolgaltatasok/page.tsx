@@ -34,10 +34,27 @@ export default function SzolgaltatasokPage() {
               className="bg-white rounded-xl shadow-md overflow-hidden"
             >
               {/* Accordion Header */}
-              <button
-                onClick={() => toggleCategory(category.id)}
-                className="w-full px-6 py-4 flex items-center justify-between bg-rona-600 text-white hover:bg-rona-700 transition-all group"
-              >
+              {category.externalLink ? (
+                <a
+                  href={category.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-6 py-4 flex items-center justify-between text-white hover:opacity-90 transition-all group"
+                  style={{ backgroundColor: category.customColor || 'rgb(var(--rona-600))' }}
+                >
+                  <span className="flex items-center gap-3 text-lg font-semibold">
+                    <ServiceIcon serviceId={category.id} size={28} className="flex-shrink-0" />
+                    {category.name}
+                  </span>
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              ) : (
+                <button
+                  onClick={() => toggleCategory(category.id)}
+                  className="w-full px-6 py-4 flex items-center justify-between bg-rona-600 text-white hover:bg-rona-700 transition-all group"
+                >
                 <span className="flex items-center gap-3 text-lg font-semibold">
                   <ServiceIcon serviceId={category.id} size={28} className="flex-shrink-0" />
                   {category.name}
@@ -58,8 +75,10 @@ export default function SzolgaltatasokPage() {
                   />
                 </svg>
               </button>
+              )}
 
-              {/* Accordion Content */}
+              {/* Accordion Content - only for non-external links */}
+              {!category.externalLink && (
               <div
                 className={`overflow-hidden transition-all duration-300 ${
                   openCategory === category.id
@@ -91,6 +110,7 @@ export default function SzolgaltatasokPage() {
                   </table>
                 </div>
               </div>
+              )}
             </div>
           ))}
         </div>

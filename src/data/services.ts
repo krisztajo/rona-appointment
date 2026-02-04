@@ -3,6 +3,8 @@ export interface ServiceCategory {
   name: string;
   icon: string;
   services: Service[];
+  customColor?: string;
+  externalLink?: string;
 }
 
 export interface Service {
@@ -83,6 +85,18 @@ export const serviceCategories: ServiceCategory[] = [
     services: [
       { name: "Gyermeksebészeti vizsgálat", price: "30 000 Ft" },
       { name: "Gyermeksebészeti konzultáció", price: "25 000 Ft" }
+    ]
+  },
+  {
+    id: "whitelab",
+    name: "WhiteLab",
+    icon: "whitelab",
+    customColor: "rgb(211, 35, 120)",
+    externalLink: "https://whitelab.hu/helyszinek/rona-rendelo",
+    services: [
+      { name: "EMS edzés", price: "Részletek a WhiteLab oldalon" },
+      { name: "Személyi edzés", price: "Részletek a WhiteLab oldalon" },
+      { name: "Fitness tanácsadás", price: "Részletek a WhiteLab oldalon" }
     ]
   }
 ];
