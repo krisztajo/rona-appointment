@@ -10,7 +10,7 @@ import {
   SurgeryIcon,
   UltrasoundIcon,
 } from "@/components/icons/ServiceIcons";
-import { WhiteLabLogoIcon } from "@/components/icons/WhiteLabLogoIcon";
+
 
 export default function Home() {
   // Show first 4 doctors on homepage
@@ -146,7 +146,7 @@ export default function Home() {
               { name: "Urológia", icon: UrologyIcon, desc: "Urológiai vizsgálatok és kezelések", link: "/szolgaltatasok" },
               { name: "Sebészet", icon: SurgeryIcon, desc: "Általános és onkosebészet", link: "/szolgaltatasok" },
               { name: "UH Diagnosztika", icon: UltrasoundIcon, desc: "Ultrahang vizsgálatok", link: "/szolgaltatasok" },
-              { name: "WhiteLab", icon: WhiteLabLogoIcon, desc: "Laborvizsgálatok", link: "https://whitelab.hu/helyszinek/rona-rendelo", external: true, color: "rgb(211, 35, 120)" },
+              { name: "WhiteLab", icon: null, desc: "Laborvizsgálatok", link: "https://whitelab.hu/helyszinek/rona-rendelo", external: true, color: "rgb(211, 35, 120)", logoImg: "/whitelab-logo-full.webp" },
             ].map((specialty) => (
               specialty.external ? (
                 <a
@@ -157,8 +157,12 @@ export default function Home() {
                   className="bg-white p-6 rounded-xl shadow-sm border-2 transition-all duration-200 group"
                   style={{ borderColor: specialty.color || 'transparent' }}
                 >
-                  <div className="transition-transform duration-200 group-hover:scale-110 inline-block" style={{ color: specialty.color }}>
-                    <specialty.icon size={40} className="transition-colors mb-4" />
+                  <div className="transition-transform duration-200 group-hover:scale-110 inline-block mb-4" style={{ color: specialty.color }}>
+                    {specialty.logoImg ? (
+                      <img src={specialty.logoImg} alt="WhiteLab logó" style={{ height: 38, maxWidth: 120, objectFit: 'contain', display: 'block', margin: '0 auto' }} />
+                    ) : (
+                      <specialty.icon size={40} className="transition-colors" />
+                    )}
                   </div>
                   <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
                     {specialty.name}
