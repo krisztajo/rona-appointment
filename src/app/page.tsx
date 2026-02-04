@@ -172,7 +172,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/whitelab2.png" alt="WhiteLab logó" style={{ height: 38, maxWidth: 120, objectFit: 'contain', display: 'block', margin: '0 auto' }} />
               </div>
-              <h3 className="font-semibold text-lg text-gray-900 group-hover:text-rona-600 transition-colors mb-2">
+              <h3 className="font-semibold text-lg text-gray-900 transition-colors mb-2 group-hover:text-[#d32378]">
                 WhiteLab
               </h3>
               <p className="text-gray-600 text-sm">Laborvizsgálatok</p>
