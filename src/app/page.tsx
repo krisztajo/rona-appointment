@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { doctors } from "@/data/doctors";
 import { contactInfo } from "@/data/contact";
-import DoctorCard from "@/components/DoctorCard";
+import StaffCard from "@/components/StaffCard";
 import {
   DermatologyIcon,
   OrthopedicsIcon,
@@ -208,7 +208,7 @@ export default function Home() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredDoctors.map((doctor) => (
-              <DoctorCard key={doctor.id} doctor={doctor} />
+              <StaffCard key={doctor.id} staff={doctor} />
             ))}
           </div>
 
