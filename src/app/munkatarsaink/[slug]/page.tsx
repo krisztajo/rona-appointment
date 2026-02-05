@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getDoctorBySlug, getAllDoctorSlugs } from "@/data/doctors";
 import BookingButton from "@/components/BookingButton";
+import DoctorImage from "@/components/DoctorImage";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -53,11 +54,7 @@ export default async function DoctorPage({ params }: Props) {
           <div className="md:flex">
             {/* Photo */}
             <div className="md:w-1/3 bg-gradient-to-br from-rona-100 to-rona-200 flex items-center justify-center p-8">
-              <div className="w-40 h-40 rounded-full bg-rona-300 flex items-center justify-center">
-                <svg className="w-24 h-24 text-rona-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
+              <DoctorImage src={doctor.image} alt={doctor.name} size="large" />
             </div>
 
             {/* Info */}

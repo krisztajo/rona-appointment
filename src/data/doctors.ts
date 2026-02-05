@@ -27,7 +27,7 @@ export const doctors: StaffMember[] = [
     staffType: "doctor",
     specialties: ["Bőrgyógyászat", "Gyerekbőrgyógyászat", "Kozmetológia"],
     schedule: "Kedd: 15:30-18:00, Péntek: 8:00-12:00",
-    image: "/images/doctors/dr-csitos-agnes.jpg",
+    image: "/images/doctors/dr_csitos_agnes.jpg",
     shortBio: "A Bethesda Gyermekkórház bőrgyógyász főorvosa, az Uzsoki Kórház konzíliárus bőrgyógyásza.",
     fullBio: `2002-ben végeztem a Szegedi Tudományegyetem Általános Orvostudományi Karán. A diplomaosztót követően a Szegedi Tudományegyetem Bőrgyógyászati és Allergológiai Klinikáján kezdtem dolgozni. Hosszú időt töltöttem az égés- plasztikai sebészeti részlegen, az onkológiai, illetve a pikkelysömörös betegek gondozásával foglalkozó osztályon. Volt szerencsém számtalan ritka betegséggel megismerkedni.
 
@@ -56,7 +56,7 @@ Fő érdeklődési területem az ér-, valamint a festéksejtes anyajegyek gondo
     staffType: "doctor",
     specialties: ["Ortopédia", "Sportsebészet", "Traumatológia"],
     schedule: "Szerda: 15:30-18:00",
-    image: "/images/doctors/dr-vasarhelyi-gabor.jpg",
+    image: "/images/doctors/dr_vasarhelyi_gabor.jpg",
     shortBio: "Az Uzsoki Kórház Ortopéd-Traumatológia osztályának részlegvezető főorvosa.",
     fullBio: `Orvosi diplomámat 2000-ben Szegeden szereztem. 2001-től a magyar ortopédia bölcsőjének számító Uzsoki Kórház Ortopéd-Traumatológia osztályán dolgozom, mostanra már részlegvezető főorvosként. A nagy múltú, a magyar ortopédia és traumatológia bölcsőjének számító, és főleg Hangody Professzor vezetése alatt nem csak hazai, hanem nemzetközi szinten is ismert és elismert osztályon alkalmam volt az alapoktól megtanulni az ortopéd, traumatológiai ellátás teljes spektrumát.
 
@@ -83,7 +83,7 @@ A RónaRendelő-ben lehetőség van az előzményi adatok, fizikális vizsgálat
     staffType: "doctor",
     specialties: ["UH diagnosztika", "Radiológia"],
     schedule: "Hétfő: 16:00-18:00",
-    image: "/images/doctors/dr-nahm-krisztina.jpg",
+    image: "/images/doctors/dr_nahm_krisztina.jpg",
     shortBio: "Az Uzsoki Kórház Radiológiai Osztályának főorvosa, 1981 óta végez komplex emlővizsgálatokat.",
     fullBio: `Általános orvosi diplomámat 1978-ban szereztem a Semmelweis Orvostudományi Egyetem Általános Orvosi Karán. Radiológus szakvizsgát 1982-ben tettem, komplex emlővizsgálatokat 1981 óta végzek.
 
@@ -113,7 +113,7 @@ Rendelőnkben a legkülönfélébb ultrahang vizsgálatokat végezzük. Az elvé
     staffType: "doctor",
     specialties: ["Urológia", "Onkosebészet"],
     schedule: "Hétfő: 15:00-20:00",
-    image: "/images/doctors/dr-toth-zoltan.jpg",
+    image: "/images/doctors/dr_toth_zoltan.jpg",
     shortBio: "Az Uzsoki Kórház Urológiai Osztályának osztályvezetője, laparoscopos sebészet specialista.",
     fullBio: `Dr. Tóth Zoltán vagyok, urológus szakorvos, PhD. 1990-ben végeztem a Semmelweis Orvostudományi Egyetemen, majd 1994-ben szereztem meg az urológiai szakvizsgát. Pályafutásom során számos külföldi tanulmányúton vettem részt, többek között Bécsben, Berlinben és Innsbruckban, ahol nemzetközi tapasztalatokat szereztem a legmodernebb urológiai eljárások terén.
 
@@ -139,7 +139,7 @@ Várom, hogy segíthessek Önnek is egészsége megőrzésében és gyógyítás
     staffType: "doctor",
     specialties: ["Általános sebészet", "Onkosebészet", "Laparoszkópos sebészet"],
     schedule: "Szerda: 16:00-18:00",
-    image: "/images/doctors/dr-dede-kristof.jpg",
+    image: "/images/doctors/dr_dede_kristof.jpg",
     shortBio: "Az Uzsoki Kórház Sebészeti Osztályának osztályvezető helyettes főorvosa, minimálisan invazív sebészet specialista.",
     fullBio: `2000-ben végeztem Budapesten a Semmelweis Egyetemen, majd 2007-ben sebészeti, 2009-ben gasztroenterológiai szakvizsgát szereztem. 2015-ben májsebészeti témában szereztem PhD fokozatot. 2002 óta dolgozom az Uzsoki utcai Kórház Sebészeti-, Onkosebészeti Osztályán, jelenleg osztályvezető helyettes főorvosként.
 
@@ -167,7 +167,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     staffType: "doctor",
     specialties: ["Ortopédia", "Traumatológia", "Sportsebészet", "Vállspecialista"],
     schedule: "Hétfő: 15:30-18:00",
-    image: "/images/doctors/dr-domaraczki-oliver.jpg",
+    image: "/images/doctors/dr_domaraczki_oliver.jpg",
     shortBio: "Ortopéd traumatológus, sportsebész, vállspecialista.",
     fullBio: `Ortopéd traumatológus, sportsebész szakorvos vagyok, különös szakértelemmel a vállízületi problémák kezelésében. Széleskörű tapasztalattal rendelkezem a sportorvoslás és a mozgásszervi rehabilitáció területén.`,
     services: [
@@ -184,7 +184,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     staffType: "doctor",
     specialties: ["Ortopédia"],
     schedule: "Kedd: 15:30-18:00",
-    image: "/images/doctors/dr-szerb-imre.jpg",
+    image: "/images/doctors/dr_szerb_imre.jpg",
     shortBio: "Ortopéd szakorvos.",
     fullBio: `Ortopéd szakorvosként dolgozom, széleskörű tapasztalattal a mozgásszervi betegségek diagnosztikájában és kezelésében.`,
     services: [
@@ -200,7 +200,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     staffType: "doctor",
     specialties: ["Ortopédia", "Sportsebészet", "Traumatológia"],
     schedule: "Csütörtök: 16:00-18:00",
-    image: "/images/doctors/dr-pap-karoly.jpg",
+    image: "/images/doctors/dr_pap_karoly.jpg",
     shortBio: "Ortopéd szakorvos, egyetemi adjunktus, sportsebészet és traumatológia specialista.",
     fullBio: `Ortopéd szakorvos, egyetemi adjunktus vagyok. Szakterületem az ortopédia, sportsebészet és traumatológia. Egyetemi munkám mellett magánrendelésen is fogadom a betegeket.`,
     services: [
@@ -217,7 +217,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     staffType: "doctor",
     specialties: ["Sebészet", "Onkosebészet"],
     schedule: "Kedd: 16:00-19:00",
-    image: "/images/doctors/dr-papp-geza.jpg",
+    image: "/images/doctors/dr_papp_geza.jpg",
     shortBio: "Sebész-onkosebész szakorvos.",
     fullBio: `Sebész-onkosebész szakorvosként dolgozom. Széleskörű tapasztalattal rendelkezem az általános sebészet és az onkológiai sebészet területén.`,
     services: [
@@ -233,7 +233,7 @@ További kiemelt érdeklődési területem a sportsérv sebészete. A rendelése
     staffType: "doctor",
     specialties: ["Gyermeksebészet"],
     schedule: "Csütörtök: 16:00-18:00",
-    image: "/images/doctors/dr-mikoczi-mario.jpg",
+    image: "/images/doctors/dr_mikoczi_mario.jpg",
     shortBio: "Gyermeksebész szakorvos, adjunktus.",
     fullBio: `Gyermeksebész szakorvos, adjunktus vagyok. Szakmai munkám során a gyermekek sebészeti ellátására specializálódtam.`,
     services: [
