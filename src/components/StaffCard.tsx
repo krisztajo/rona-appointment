@@ -13,7 +13,16 @@ export default function StaffCard({ staff, linkPrefix = "/munkatarsaink" }: Staf
   
   const CardContent = () => (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 p-5 h-full flex flex-col">
-      <div className="flex items-start gap-4">
+      {/* Name and Title - Full Width at Top */}
+      <div className="mb-4">
+        <h3 className="text-lg font-bold text-gray-900 group-hover:text-rona-600 transition-colors">
+          {staff.name}
+        </h3>
+        <p className="text-rona-600 text-sm font-medium">{staff.title}</p>
+      </div>
+
+      {/* Photo and Additional Info */}
+      <div className="flex items-start gap-4 mb-3">
         {/* Photo */}
         <div className="flex-shrink-0">
           <DoctorImage src={staff.image} alt={staff.name} size="small" />
@@ -21,11 +30,6 @@ export default function StaffCard({ staff, linkPrefix = "/munkatarsaink" }: Staf
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-bold text-gray-900 group-hover:text-rona-600 transition-colors truncate">
-            {staff.name}
-          </h3>
-          <p className="text-rona-600 text-sm font-medium mb-2">{staff.title}</p>
-          
           {/* For doctors: show specialties */}
           {isDoctor && staff.specialties && staff.specialties.length > 0 && (
             <div className="flex flex-wrap gap-1 mb-2">
@@ -54,7 +58,7 @@ export default function StaffCard({ staff, linkPrefix = "/munkatarsaink" }: Staf
 
       {/* Short bio - only for doctors */}
       {isDoctor && staff.shortBio && (
-        <p className="text-gray-600 text-sm line-clamp-2 mt-3 flex-grow">{staff.shortBio}</p>
+        <p className="text-gray-600 text-sm line-clamp-2 flex-grow">{staff.shortBio}</p>
       )}
 
       {/* CTA - only for doctors */}
