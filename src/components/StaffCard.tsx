@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { StaffMember } from "@/data/doctors";
+import DoctorImage from "./DoctorImage";
 
 interface StaffCardProps {
   staff: StaffMember;
@@ -15,20 +16,7 @@ export default function StaffCard({ staff, linkPrefix = "/munkatarsaink" }: Staf
       <div className="flex items-start gap-4">
         {/* Photo */}
         <div className="flex-shrink-0">
-          <div className="w-16 h-20 rounded-full bg-gradient-to-br from-rona-100 to-rona-200 flex items-center justify-center overflow-hidden">
-            <svg className="w-10 h-10 text-rona-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            {/* Uncomment when images are available:
-            <Image
-              src={staff.image}
-              alt={staff.name}
-              width={64}
-              height={80}
-              className="object-cover w-full h-full"
-            />
-            */}
-          </div>
+          <DoctorImage src={staff.image} alt={staff.name} size="small" />
         </div>
 
         {/* Info */}
