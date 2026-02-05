@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -27,7 +27,6 @@ interface GroupedSlots {
 
 export default function BookingPage() {
   const params = useParams();
-  const router = useRouter();
   const slug = params.slug as string;
   const { isAuthenticated, isLoading: authLoading, user } = useAuth();
   const allowedRoles = ["admin", "superadmin", "doctor"];
@@ -125,7 +124,7 @@ export default function BookingPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a foglalás során");
     } finally {
       setSubmitting(false);

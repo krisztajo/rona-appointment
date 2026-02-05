@@ -1,7 +1,7 @@
 // Orvos beosztások (schedules) kezelése
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
-import type { ApiResponse, DoctorSchedule, CreateScheduleRequest } from "@/types/database";
+import type { ApiResponse, CreateScheduleRequest } from "@/types/database";
 
 /**
  * GET /api/admin/schedules

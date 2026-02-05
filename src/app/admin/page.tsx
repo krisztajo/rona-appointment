@@ -15,7 +15,7 @@ interface DashboardStats {
 
 export default function AdminDashboard() {
   const router = useRouter();
-  const { user, isAuthenticated, isAdmin, isLoading: authLoading, logout } = useAuth();
+  const { user, isAdmin, isLoading: authLoading, logout } = useAuth();
 
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isInitialized, setIsInitialized] = useState<boolean | null>(null);
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt az inicializálás során");
     }
   };
@@ -61,7 +61,7 @@ export default function AdminDashboard() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a migráció során");
     }
   };
@@ -77,7 +77,7 @@ export default function AdminDashboard() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a szinkronizálás során");
     }
   };

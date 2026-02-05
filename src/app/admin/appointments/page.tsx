@@ -1,7 +1,7 @@
 // Admin - Foglalások kezelése oldal
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 interface Appointment {
@@ -26,7 +26,7 @@ export default function AdminAppointmentsPage() {
   const [updating, setUpdating] = useState<number | null>(null);
 
   // Foglalások betöltése a dedikált API-ból
-  const loadAppointments = async () => {
+  const loadAppointments = useCallback(async () => {
     try {
       const url = filter === "all" 
         ? "/api/admin/appointments" 
@@ -42,11 +42,11 @@ export default function AdminAppointmentsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filter]);
 
   useEffect(() => {
     loadAppointments();
-  }, [filter]);
+  }, [loadAppointments]);
 
   // Státusz módosítás
   const updateStatus = async (id: number, newStatus: string) => {

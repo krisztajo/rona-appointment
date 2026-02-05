@@ -28,7 +28,7 @@ export default function RolunkPage() {
             várakozást jelenti. Ezen felül, a mindennapi munka melletti
             kórházi körülmények nem mindig alkalmasak a betegek egy részének
             sokat jelentő, kiszámítható vizsgálati idő tartására. A{" "}
-            <strong>„RónaRendelő"-t</strong> évekkel ezelőtt azon
+            <strong>&bdquo;RónaRendelő&rdquo;-t</strong> évekkel ezelőtt azon
             megfontolások alapján hoztuk létre, hogy olyan betegeknek
             kínáljunk alternatívát, akiknek sokat számít a mielőbbi orvosi
             konzultáció, vagy munkájukból, elfoglaltságaikból adódóan fontos,
@@ -43,8 +43,8 @@ export default function RolunkPage() {
             <p className="leading-relaxed">
               Azonban az élet közbe szólt, a 2021.03.01.-től a{" "}
               <strong>
-                „528/2020. (XI. 28.) Korm. rendelet az egészségügyi szolgálati
-                jogviszonyról szóló 2020. évi C. törvény"
+                &bdquo;528/2020. (XI. 28.) Korm. rendelet az egészségügyi szolgálati
+                jogviszonyra szóló 2020. évi C. törvény&rdquo;
               </strong>{" "}
               miatt megváltozó jogszabályi háttér miatt, mely egyazon
               diagnózissal megszűntette az átjárhatóságot a magán és állami

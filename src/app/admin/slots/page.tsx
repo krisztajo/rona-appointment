@@ -91,7 +91,7 @@ export default function AdminSlotsPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt");
     }
   };
@@ -109,7 +109,7 @@ export default function AdminSlotsPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt");
     }
   };

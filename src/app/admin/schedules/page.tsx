@@ -206,7 +206,7 @@ export default function SchedulesPage() {
       } else {
         alert(`${createdCount} időbeosztás sikeresen létrehozva!`);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a mentés során");
     }
   };
@@ -255,7 +255,7 @@ export default function SchedulesPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a törlés során");
     }
   };
@@ -289,7 +289,7 @@ export default function SchedulesPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a generálás során");
     } finally {
       setGenerating(false);

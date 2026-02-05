@@ -40,10 +40,15 @@ export default function SzolgaltatasokPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-6 py-4 flex items-center justify-between text-white hover:opacity-90 transition-all group"
-                  style={{ backgroundColor: category.customColor || 'rgb(var(--rona-600))' }}
+                  style={{ backgroundColor: category.customColor || 'var(--rona-600)' }}
                 >
                   <span className="flex items-center gap-3 text-lg font-semibold">
-                    <ServiceIcon serviceId={category.id} size={28} className="flex-shrink-0" />
+                    <ServiceIcon 
+                      serviceId={category.id} 
+                      imageSrc={category.icon} 
+                      size={28} 
+                      className="flex-shrink-0" 
+                    />
                     {category.name}
                   </span>
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +61,12 @@ export default function SzolgaltatasokPage() {
                   className="w-full px-6 py-4 flex items-center justify-between bg-rona-600 text-white hover:bg-rona-700 transition-all group"
                 >
                 <span className="flex items-center gap-3 text-lg font-semibold">
-                  <ServiceIcon serviceId={category.id} size={28} className="flex-shrink-0" />
+                  <ServiceIcon 
+                    serviceId={category.id} 
+                    imageSrc={category.icon} 
+                    size={28} 
+                    className="flex-shrink-0" 
+                  />
                   {category.name}
                 </span>
                 <svg

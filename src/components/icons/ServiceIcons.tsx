@@ -3,6 +3,7 @@
 // Színpaletta: currentColor (öröklődik a szülőtől)
 
 import React from "react";
+import Image from "next/image";
 
 interface IconProps {
   className?: string;
@@ -223,11 +224,27 @@ export const serviceIconMap: Record<string, React.FC<IconProps>> = {
 };
 
 // Univerzális ServiceIcon komponens
-export const ServiceIcon: React.FC<IconProps & { serviceId: string }> = ({
+export const ServiceIcon: React.FC<IconProps & { serviceId: string; imageSrc?: string }> = ({
   serviceId,
+  imageSrc,
   className = "",
   size = defaultSize,
 }) => {
+  // Ha van imageSrc és az egy képfájl (kezdődik / vagy http-vel), akkor azt jelenítjük meg
+  if (imageSrc && (imageSrc.startsWith('/') || imageSrc.startsWith('http'))) {
+    return (
+      <div className={`flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
+        <Image 
+          src={imageSrc} 
+          alt={serviceId} 
+          width={size} 
+          height={size}
+          className="object-contain"
+        />
+      </div>
+    );
+  }
+
   const IconComponent = serviceIconMap[serviceId];
   
   if (!IconComponent) {

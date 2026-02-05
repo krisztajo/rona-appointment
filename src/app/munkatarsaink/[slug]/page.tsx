@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { doctors, getDoctorBySlug, getAllDoctorSlugs } from "@/data/doctors";
-import { contactInfo } from "@/data/contact";
+import { getDoctorBySlug, getAllDoctorSlugs } from "@/data/doctors";
 import BookingButton from "@/components/BookingButton";
 
 interface Props {

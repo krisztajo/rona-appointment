@@ -77,7 +77,7 @@ export default function AdminDoctorsPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt");
     }
   };
@@ -113,7 +113,7 @@ export default function AdminDoctorsPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt");
     }
   };

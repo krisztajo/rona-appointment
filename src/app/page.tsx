@@ -77,7 +77,7 @@ export default function Home() {
               a betegek egy részének sokat jelentő, <strong>kiszámítható vizsgálati idő</strong> tartására.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              A <strong>„RónaRendelő"-t</strong> évekkel ezelőtt azon megfontolások alapján hoztuk létre, 
+              A <strong>&bdquo;RónaRendelő&rdquo;-t</strong> évekkel ezelőtt azon megfontolások alapján hoztuk létre,
               hogy olyan betegeknek kínáljunk alternatívát, akiknek sokat jelent a <strong>nyugodt 
               környezet</strong>, a <strong>kiszámítható időpont</strong> és a <strong>személyes törődés</strong>.
             </p>

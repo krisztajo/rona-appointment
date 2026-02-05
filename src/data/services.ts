@@ -90,7 +90,7 @@ export const serviceCategories: ServiceCategory[] = [
   {
     id: "whitelab",
     name: "WhiteLab",
-    icon: "/images/whitelab2.png",
+    icon: "/whitelab2.png",
     externalLink: "https://whitelab.hu/helyszinek/rona-rendelo",
     services: [
       { name: "Laborvizsgálatok", price: "Részletek a WhiteLab oldalon" },

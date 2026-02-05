@@ -125,7 +125,7 @@ export default function AdminBookingPage() {
       } else {
         alert("Hiba: " + data.error);
       }
-    } catch (error) {
+    } catch {
       alert("Hiba történt a foglalás során");
     } finally {
       setSubmitting(false);

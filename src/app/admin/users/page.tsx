@@ -1,10 +1,9 @@
 // Felhasználók kezelése - Superadmin oldal
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useAuth, useRequireAdmin } from "@/contexts/AuthContext";
+import { useRequireAdmin } from "@/contexts/AuthContext";
 import { UserPublic, UserRole } from "@/types/database";
 
 interface UserWithDoctor extends UserPublic {
@@ -17,7 +16,6 @@ interface DoctorOption {
 }
 
 export default function UsersPage() {
-  const router = useRouter();
   const { user, token, isLoading: authLoading } = useRequireAdmin("/auth/login");
   
   const [users, setUsers] = useState<UserWithDoctor[]>([]);
@@ -41,13 +39,7 @@ export default function UsersPage() {
   // Csak superadmin férhet hozzá
   const isSuperadmin = user?.role === "superadmin";
 
-  useEffect(() => {
-    if (!authLoading && user && isSuperadmin) {
-      loadData();
-    }
-  }, [authLoading, user, isSuperadmin]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     if (!token) return;
     
     try {
@@ -70,12 +62,18 @@ export default function UsersPage() {
       if (doctorsData.success) {
         setDoctors(doctorsData.data);
       }
-    } catch (err) {
+    } catch {
       setError("Hiba az adatok betöltésekor");
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (!authLoading && user && isSuperadmin) {
+      loadData();
+    }
+  }, [authLoading, user, isSuperadmin, loadData]);
 
   const openCreateModal = () => {
     setEditingUser(null);
@@ -160,7 +158,7 @@ export default function UsersPage() {
 
       setShowModal(false);
       loadData();
-    } catch (err) {
+    } catch {
       setError("Hiba történt a mentés során");
     } finally {
       setSubmitting(false);
@@ -183,7 +181,7 @@ export default function UsersPage() {
       } else {
         alert(data.error);
       }
-    } catch (err) {
+    } catch {
       alert("Hiba történt a törlés során");
     }
   };
